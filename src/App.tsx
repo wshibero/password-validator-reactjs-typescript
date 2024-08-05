@@ -11,14 +11,21 @@ export default function App() {
   const actionHandler = function(e: React.ChangeEvent<HTMLInputElement>){
     e.preventDefault()
     setPassword(e.target.value)
-    setDone("complete password")
+    let endstatement: string[] = []
+    let regex = new RegExp("[!@#$%^&*()-=1234567890]")
     console.log(password+" => "+password.length)
-    if(password === ''){
-      console.log(password.length)
-      setStatements([
-        "Please enter any the password"
-      ])
-      setDone("empty password")
+    if (password.length < 8){
+      endstatement.push("The password must be more than 8 characters")
+    }
+    if(regex.test(password) === false){
+      endstatement.push("The password must contain some special characters")
+    }
+    if (endstatement.length > 0){
+      setStatements(endstatement)
+      setDone("incomplete password")
+    }else{
+      setDone("complete password")
+      setStatements(["The password is valid"])
     }
   }
   return (
@@ -34,7 +41,7 @@ export default function App() {
             onChange={actionHandler}
             />
         </form>
-        <ol>
+        <ol style={{ listStyleType: 'none' }}>
           {statements.map((statement) => {
             return <li>{statement}</li>
           })}

@@ -1,17 +1,35 @@
 main {
 }
 
-.app{}
+.app{
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+  margin-left: 20%;
+  margin-top: 2em;
+  border: solid 2px black;
+  border-radius: 30px;
+}
 
 .empty{
   background: white;
   outline: none;
 }
 
+label{
+  width: 100%;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
 .password{
+  width: 100%;
   border: none;
   border-bottom: 2px solid black;
   /* outline: none; */
+  text-align: center;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
 }
 
 .complete{
